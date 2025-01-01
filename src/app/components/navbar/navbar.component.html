@@ -1,24 +1,21 @@
 <div class="card rounded-0">
     <nav class="navbar navbar-expand-lg sticky-top navShadow">
       <div class="container">
-        <div class="d-flex justify-content-between w-100">
+        <div class="d-flex justify-content-between lign-items-center w-100">
           <a class="wTitle navbar-brand fs-5 mt-2 fw-bolder">Where in the World?</a>
-          <div class="d-flex align-items-center justify-content-between" id="navbarSupportedContent">
-            <div class="langContainer ms-auto">
-              <ul class="navbar-nav navbar-navSm p-0">
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle cr" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    {{"navbar.Lang" |translate}}
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li class="cr" (click)="Change('en')" [class.bg-info]="_TranslateService.currentLang=='en'"><a class="dropdown-item">{{'navbar.EN' |translate}}</a></li>
-                    <li class="cr" (click)="Change('ar')" [class.bg-info]="_TranslateService.currentLang=='ar'"><a class="dropdown-item">{{'navbar.AR' |translate}}</a></li>
-                  </ul>
-        
-                </li>
+          <div class="d-flex justify-content-between align-items-center" id="navbarSupportedContent">
+            <div class="langContainer me-2 ms-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  {{"navbar.Lang" |translate}}
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="cr" (click)="Change('en')" [class.bg-info]="_TranslateService.currentLang=='en'"><a class="dropdown-item">{{'navbar.EN' |translate}}</a></li>
+                  <li class="cr" (click)="Change('ar')" [class.bg-info]="_TranslateService.currentLang=='ar'"><a class="dropdown-item">{{'navbar.AR' |translate}}</a></li>
               </ul>
+              </li>
             </div>
-            <div class="navbar-brand ms-2 cr">
+            <div class="navbar-brand pt-1 ms-2 cr">
               @if (darkModeService.darkModeSignal()==='dark') {
                 <span (click)="toggleDarkMode()">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="47" fill="currentColor" class="bi bi-moon-fill" viewBox="0 0 16 16">
