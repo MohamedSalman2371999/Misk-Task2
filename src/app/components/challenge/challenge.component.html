@@ -2,13 +2,16 @@
       <div class="container py-5">
           <div class="controlar mb-5 d-flex justify-content-between align-items-center">
               <div class="fillter">
-                  <p-dropdown 
-                      class=""
-                      [options]="cities" 
-                      optionLabel="name"
-                      placeholder="Filler by Region"
-                      (click)="selectRegion($event)"
-                      />
+                        <a class="bg-body-secondary dropdown d-flex justify-content-center align-items-center  px-4 py-2 rounded-2 nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          <span class="pe-2">
+                            {{filterPlaceholder}}
+                          </span>
+                        </a>
+                        <ul class="dropdown-menu rounded-2 bg-body-secondary">
+                          @for (city of cities; track $index) {
+                            <li class="text-center border rounded-2" (click)="selectRegion($event)"><a class="dropdown-item">{{city.name}}</a></li>
+                          }
+                        </ul>
               </div>
               <div class="countrySearch bg-body-secondary py-2 ms-2 rounded-2 d-flex align-items-center">
                   <i class="fa-solid fa-magnifying-glass text-secondary ps-3"></i>

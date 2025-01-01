@@ -49,4 +49,21 @@
     border-radius: 5px;
     text-align: center;
   }
-  
+  .dropdown{
+    height: 3.25rem;
+    width: 10.875rem;
+  }
+  .dropdown-menu{
+    width: 10.875rem;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .dropdown-menu li{
+    padding: 5px 0 !important;
+  }
+  .dropdown-menu li a:hover{
+    background-color: transparent !important;
+  }
+  .dropdown-menu li a:active{
+   color: black;
+  }

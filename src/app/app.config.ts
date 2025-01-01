@@ -19,16 +19,18 @@ export const appConfig: ApplicationConfig = {
     BrowserAnimationsModule,
   provideAnimations(),
   provideHttpClient(withFetch()),
-  importProvidersFrom(
+  importProvidersFrom(BrowserModule,BrowserAnimationsModule,
     TranslateModule.forRoot({
-    defaultLanguage: 'en',
-    loader: {
-      provide: TranslateLoader,
-      useFactory: HttpLoaderFactory,
-      deps: [HttpClient]
-    }
-  })
-  ), provideAnimationsAsync()
+      defaultLanguage:'en',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
+  ), 
+  
+  provideAnimationsAsync()
   ],
 
 };

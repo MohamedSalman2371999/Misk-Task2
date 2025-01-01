@@ -31,6 +31,7 @@ countryID!:number|null
 text:string=''
 cities: City[] | undefined;
 region:string=''
+filterPlaceholder:string='Filler by Region'
 isSort:boolean=true
 checkpag:boolean=false
 pagenation:number=1
@@ -59,7 +60,10 @@ selectRegion(e:any):void{
   // if (e.target.value==undefined) {
   //   this.region=''    
   // }
-  this.cities?.map((city)=>{
+
+  console.log(e.target.innerText);
+  this.filterPlaceholder=e.target.innerText
+    this.cities?.map((city)=>{
     if (e.target.innerText==city.name) {
       this.region=e.target.innerText
       if (e.target.innerText=="All") {
@@ -67,6 +71,7 @@ selectRegion(e:any):void{
       }
     }
   })
+  
 }
 sort():void{
 if (!this.isSort) {
