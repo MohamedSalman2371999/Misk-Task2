@@ -1,0 +1,52 @@
+*:focus{
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.card-title{
+    font-size: 1.125rem;
+}
+.card-text{
+    font-size: .9375rem;
+    font-weight: 700;
+}
+.cardImg{
+    height: 11.25rem;
+}
+.card{
+    cursor: pointer;
+}
+.search:focus{
+    border: none;
+    box-shadow: none;
+}
+.btn-main {
+    background-color: gray;
+    padding: 8px 20px;
+    border: 1px solid #ccc;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.5s;
+  }
+.cr {
+    cursor: pointer;
+  }
+ 
+  body.dark-mode {
+    background-color: #121212;
+    color: white;
+  }
+  
+  .countries-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  
+  .country-card {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+  }
+  

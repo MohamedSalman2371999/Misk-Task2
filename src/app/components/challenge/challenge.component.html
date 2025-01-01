@@ -1,0 +1,83 @@
+  <section class="card rounded-0">
+      <div class="container py-5">
+          <div class="controlar mb-5 d-flex justify-content-between align-items-center">
+              <div class="fillter">
+                  <p-dropdown 
+                      class=""
+                      [options]="cities" 
+                      optionLabel="name"
+                      placeholder="Filler by Region"
+                      (click)="selectRegion($event)"
+                      />
+              </div>
+              <div class="countrySearch bg-body-secondary py-1 rounded-2 d-flex align-items-center">
+                  <i class="fa-solid fa-magnifying-glass text-secondary ps-3"></i>
+                  <input type="text" class="form-control bg-body-secondary rounded-1 border-0" placeholder="search by country" aria-label="Username" aria-describedby="addon-wrapping" [(ngModel)]="text">
+                </div>
+          </div>
+          @if (pagenation==1) {
+              <div class="row gy-5">
+                  @for (country of countries| coutrySearch : text |fillterByRegion :region ; track $index) {
+                      <div class="col-md-3 col-sm-6" [routerLink]="['/details',country.id]" routerLinkActive="router-link-active" >
+                          <div class="cardContainer">
+                              <div class="card">
+                                  <img [src]="country.image" class="cardImg" alt="...">
+                                  <div class="card-body">
+                                    <h5 class="card-title fw-bold">{{country.name | translate}}</h5>
+                                    <h6 class="d-block"><span class="card-text">population: </span>{{country.population}}</h6>
+                                    <h6 class="d-block"><span class="card-text">region: </span>{{country.region}}</h6>
+                                    <h6 class="d-block"><span class="card-text">capital: </span>{{country.capital}}</h6>
+                                  </div>
+                                </div>
+                          </div>
+                      </div>
+                  }
+              </div>
+          }
+          @if (pagenation==2) {
+              <div class="row gy-5">
+                  @for (country of countries2| coutrySearch : text |fillterByRegion :region ; track $index) {
+                      <div class="col-md-3 col-sm-6" [routerLink]="['/details',country.id]" routerLinkActive="router-link-active" >
+                          <div class="cardContainer">
+                              <div class="card">
+                                  <img [src]="country.image" class="cardImg" alt="...">
+                                  <div class="card-body">
+                                    <h5 class="card-title fw-bold">{{country.name}}</h5>
+                                    <h6 class="d-block"><span class="card-text">population: </span>{{country.population}}</h6>
+                                    <h6 class="d-block"><span class="card-text">region: </span>{{country.region}}</h6>
+                                    <h6 class="d-block"><span class="card-text">capital: </span>{{country.capital}}</h6>
+                                  </div>
+                                </div>
+                          </div>
+                      </div>
+                  }
+              </div>
+          }
+          <div class="pagenation text-center pt-3 d-flex align-items-center justify-content-center gap-4 my-3">
+              <i class="fa-solid fa-angle-up fa-rotate-270 cr" (click)="prevPage()"></i>
+              <span [ngClass]="{'text-white': !checkpag,'btn-main': !checkpag}" class="fw-medium cr np rounded-1" (click)="prevPage()">1</span>
+              <span [ngClass]="{'text-white': checkpag,'btn-main':checkpag}"  class="fw-medium cr np rounded-1" (click)="nextPage()">2</span>
+              <i class="fa-solid fa-angle-up fa-rotate-90 cr" (click)="nextPage()"></i>
+            </div>
+            <!-- Another pagenation -->
+            <!-- <nav aria-label="Page navigation example" class="mt-5">
+              <ul class="pagination justify-content-center">
+                <li class="page-item">
+                  <a class="page-link" aria-label="Previous">
+                      <i class="fa-solid fa-angle-up fa-rotate-270 cr" (click)="prevPage()"></i>
+                  </a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link"><span [ngClass]="{'text-white': !checkpag,'btn-main': !checkpag}" class="fw-medium cr np rounded-1" (click)="prevPage()">1</span></a>
+               </li>
+                <li class="page-item"><a class="page-link"> <span [ngClass]="{'text-white': checkpag,'btn-main':checkpag}"  class="fw-medium cr np rounded-1" (click)="nextPage()">2</span></a></li>
+                <li class="page-item">
+                  <a class="page-link" aria-label="Next">
+                      <i class="fa-solid fa-angle-up fa-rotate-90 cr" (click)="nextPage()"></i>
+                  </a>
+                </li>
+              </ul>
+            </nav> -->
+      </div>
+  </section>
+
