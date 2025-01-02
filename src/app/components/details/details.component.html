@@ -5,47 +5,49 @@
 <div class="row mx-5 gy-5">
     <div class="col-md-6">
         <div class="imgContainer">
-            <img [src]="country.image" [alt]="country.name">
+            <img [src]="countryApi.flags.png" [attr.alt]="countryApi.flags.alt">
         </div>
     </div>
     <div class="col-md-6">
         <div class="row">
             <div class="col-md-12">
                 <div class="my-4">
-                    <h5 class="card-title fw-bold">{{country.name}}</h5>
+                    <h5 class="card-title fw-bold">{{countryApi.name.common}}</h5>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="countryDetails">
-                    <h5 class=""><span class="card-title fw-bold">Native Name: </span> <span class="text-muted">{{country.name}}</span></h5>
-                    <h5 class=""><span class="card-title fw-bold">population: </span> <span class="text-muted">{{country.population}}</span></h5>
-                    <h5 class=""><span class="card-title fw-bold">region: </span> <span class="text-muted">{{country.region}}</span></h5>
-                    <h5 class=""><span class="card-title fw-bold">Sub region: </span> <span class="text-muted">{{country.subRegion}}</span></h5>
-                    <h5 class=""><span class="card-title fw-bold">capital: </span> <span class="text-muted">{{country.capital}}</span></h5>
+                <div class="countryApiDetails">
+                    <h5 class=""><span class="card-title fw-bold">Native Name: </span>
+                         <span class="text-muted">{{countryApi.name.common}}</span>
+                    </h5>
+                    <h5 class=""><span class="card-title fw-bold">population: </span> <span class="text-muted">{{countryApi.population}}</span></h5>
+                    <h5 class=""><span class="card-title fw-bold">region: </span> <span class="text-muted">{{countryApi.region}}</span></h5>
+                    <h5 class=""><span class="card-title fw-bold">Sub region: </span> <span class="text-muted">{{countryApi.subregion}}</span></h5>
+                    <h5 class=""><span class="card-title fw-bold">capital: </span> <span class="text-muted">{{countryApi.capital}}</span></h5>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="countryDetails">
+                <div class="countryApiDetails">
                     <h5 class=""><span class="card-title fw-bold">Top Level Domain:</span> 
-                        @for (topLevelDomain of country.topLevelDomain; track $index) {
-                            <span class="text-muted"> {{topLevelDomain}}</span>
+                        @for (topLevel of countryApi.tld; track $index) {
+                            <span class="text-muted"> {{topLevel}}</span>
                         }
                     </h5>
                     <h5 class=""><span class="card-title fw-bold">Currencies:</span> 
-                        @for (currencies of country.currencies; track $index) {
-                            <span class="text-muted"> {{currencies}}</span>
+                        @for (Currency of currencies; track $index) {
+                            <span class="text-muted"> {{Currency}}</span>
                         }
                     </h5>
                     <h5 class=""><span class="card-title fw-bold">Languages:</span> 
-                        @for (languages of country.languages; track $index) {
-                            <span class="text-muted"> {{languages}}</span>
+                        @for (lang of langs; track $index) {
+                            <span class="text-muted"> {{lang}}</span>
                         }
                     </h5>
                 </div>
             </div>
             <div class="col-md-13">
                 <h5 class=""><span class="card-title fw-bold">Dorder Countries:</span>
-                    @for (borderCountries of country.borderCountries; track $index) {
+                    @for (borderCountries of countryApi.borders; track $index) {
                         <button class=" m-1 btn bg-body-secondary border"> {{borderCountries}}</button>
                     }
                 </h5> 

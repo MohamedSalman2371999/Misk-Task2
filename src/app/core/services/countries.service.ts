@@ -1,12 +1,20 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Icountry } from '../interfaces/icountry';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CountriesService {
-
+  private readonly _HttpClient= inject(HttpClient)
   constructor() { }
+  getAllCountries() :Observable<any> {
+    return this._HttpClient.get(`https://restcountries.com/v3.1/all`)
+  }
+  getCountryByName(name:string) :Observable<any> {
+    return this._HttpClient.get(`https://restcountries.com/v3.1/name/${name}`)
+  }
 
   countries:Icountry[] = [
     {

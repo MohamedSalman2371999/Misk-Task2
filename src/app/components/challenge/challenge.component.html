@@ -1,4 +1,4 @@
-  <section class="card rounded-0">
+ <section class="card rounded-0">
       <div class="container py-5">
           <div class="controlar mb-5 d-flex justify-content-between align-items-center">
               <div class="fillter">
@@ -18,50 +18,43 @@
                   <input type="text" class="form-control bg-body-secondary rounded-1 border-0" placeholder="search by country" aria-label="Username" aria-describedby="addon-wrapping" [(ngModel)]="text">
                 </div>
           </div>
-          @if (pagenation==1) {
               <div class="row gy-5">
-                  @for (country of countries| coutrySearch : text |fillterByRegion :region ; track $index) {
-                      <div class="col-md-3 col-sm-6" [routerLink]="['/details',country.id]" routerLinkActive="router-link-active" >
+                  @for (country of countriesApi.slice(0,50)| coutrySearch : text | fillterByRegion : region ; track $index) {
+                      <div class="col-md-3 col-sm-6" [routerLink]="['/details', country.name.common]" routerLinkActive="router-link-active" >
                           <div class="cardContainer">
                               <div class="card">
-                                  <img [src]="country.image" class="cardImg" alt="...">
+                                  <img [src]="country.flags.png" class="cardImg shadow" [attr.alt]="country.name.common">
                                   <div class="card-body">
-                                    <h5 class="card-title fw-bold">{{country.name | translate}}</h5>
+                                    @if (!lang) {
+                                      <h5 class="card-title fw-bold">{{country.name.common.split(" ", 2).join(" ")}}</h5>
+                                    }@else{
+                                      <h5 class="card-title fw-bold">{{country.translations.ara.official}}</h5>
+                                    }
+
                                     <h6 class="d-block"><span class="card-text">population: </span>{{country.population}}</h6>
                                     <h6 class="d-block"><span class="card-text">region: </span>{{country.region}}</h6>
-                                    <h6 class="d-block"><span class="card-text">capital: </span>{{country.capital}}</h6>
+                                    <h6 class="d-block">
+                                    <span class="card-text">capital: </span>
+                                        @for (capital of country.capital; track $index) {
+                                        {{country.capital[0].split(" ",1).join(" ")}}
+                                      }
+                                  </h6>
                                   </div>
                                 </div>
                           </div>
                       </div>
                   }
               </div>
-          }
-          @if (pagenation==2) {
-              <div class="row gy-5">
-                  @for (country of countries2| coutrySearch : text |fillterByRegion :region ; track $index) {
-                      <div class="col-md-3 col-sm-6" [routerLink]="['/details',country.id]" routerLinkActive="router-link-active" >
-                          <div class="cardContainer">
-                              <div class="card">
-                                  <img [src]="country.image" class="cardImg" alt="...">
-                                  <div class="card-body">
-                                    <h5 class="card-title fw-bold">{{country.name | translate}}</h5>
-                                    <h6 class="d-block"><span class="card-text">population: </span>{{country.population}}</h6>
-                                    <h6 class="d-block"><span class="card-text">region: </span>{{country.region}}</h6>
-                                    <h6 class="d-block"><span class="card-text">capital: </span>{{country.capital}}</h6>
-                                  </div>
-                                </div>
-                          </div>
-                      </div>
-                  }
+          
+              <div class="pagenation text-center pt-3 d-flex align-items-center justify-content-center gap-4 my-3">
+                <i class="fa-solid fa-angle-up fa-rotate-270"></i>
+                <span   class="fw-medium cr np rounded-1" (click)="goToPage($event)">1</span>
+                <span   class="fw-medium cr np rounded-1" (click)="goToPage($event)">2</span>
+                <span   class="fw-medium cr np rounded-1" (click)="goToPage($event)">3</span>
+                <span   class="fw-medium cr np rounded-1" (click)="goToPage($event)">4</span>
+                <span   class="fw-medium cr np rounded-1" (click)="goToPage($event)">5</span>
+                <i class="fa-solid fa-angle-up fa-rotate-90"></i>
               </div>
-          }
-          <div class="pagenation text-center pt-3 d-flex align-items-center justify-content-center gap-4 my-3">
-              <i class="fa-solid fa-angle-up fa-rotate-270 cr" (click)="prevPage()"></i>
-              <span [ngClass]="{'text-white': !checkpag,'btn-main': !checkpag}" class="fw-medium cr np rounded-1" (click)="prevPage()">1</span>
-              <span [ngClass]="{'text-white': checkpag,'btn-main':checkpag}"  class="fw-medium cr np rounded-1" (click)="nextPage()">2</span>
-              <i class="fa-solid fa-angle-up fa-rotate-90 cr" (click)="nextPage()"></i>
-            </div>
             <!-- Another pagenation -->
             <!-- <nav aria-label="Page navigation example" class="mt-5">
               <ul class="pagination justify-content-center">

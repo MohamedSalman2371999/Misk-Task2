@@ -18,7 +18,13 @@ export class NavbarComponent {
   toggleDarkMode():void{
     this.darkModeService.updateDarkMode()
   }
-  Change(lang:string):void{
-    this._TransService.chageLang(lang)
+
+  ChangeToArabic():void{
+     this._TransService.chageLang("ar")
+    this._TransService.langAr.next(true)
+   }
+   ChangeToEnglish():void{
+    this._TransService.chageLang("en")
+    this._TransService.langAr.next(false)
    }
 }
